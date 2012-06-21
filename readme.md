@@ -85,7 +85,25 @@ app.js:
 ```
 
 ## Tests
-To be added shortly.
+How to run tests:
+
+```
+# Install buster globally
+npm install buster -g
+
+# Run the buster server
+buster server
+
+# Navigate the address that the buster
+# server is listening on and capture the
+# browsers you want to test in
+# (probably http://localhost:1111)
+
+# Run the tests in the captured browsers
+buster test
+```
+
+When buster works on IE < 8, automated cross-browser testing will be realised. Until then, you can take some assurance that this script is deployed on an MPU widget on a major UK TV channel website for a major UK betting brand, which works in IE 6, 7 and 8.
 
 ## Known issues
 A caveat of caching the results of each `require` is that the object can be modified after it has been required – affecting subsequent requires. Generally modifying an object that has been `require`d doesn't happen, but I want to resolve this edge case. However, a simple object clone will not do - what if the object has some prototypical inheritance going on?
