@@ -10,18 +10,21 @@
   /*
    * Define a module
    */
-  window.module = function (name, module) {
+  function module(name, module) {
+
     if (typeof modules[name] !== 'undefined') {
       throw new Error('Module `' + name + '` is already defined');
     }
+
     modules[name] = module;
     return;
+
   }
 
   /*
    * Require a module
    */
-  window.require = function (name) {
+  function require(name) {
 
     if (typeof modules[name] === 'undefined') {
       throw new Error('Module `' + name + '` is not defined');
@@ -49,5 +52,9 @@
     return instances[name];
 
   }
+
+  // Expose on the window object
+  window.require = require
+  window.module = module
 
 }());

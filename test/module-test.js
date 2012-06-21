@@ -1,9 +1,4 @@
-// Expose BDD verbs
 window.buster.spec.expose();
-
-var describe = window.describe
-  , it = window.it
-  , expect = window.expect
 
 describe('existence', function () {
 
@@ -41,7 +36,7 @@ describe('creating a module', function () {
       window.module('b', function (module) {
         module.exports = 'I am also a module'
       })
-    }).toThrow('Error')
+    }).toThrow()
 
   })
 
@@ -54,7 +49,7 @@ describe('loading a module', function () {
 
     expect(function () {
       window.require('z')
-    }).toThrow('Error')
+    }).toThrow()
 
   })
 
