@@ -33,7 +33,7 @@ HTML:
 <script src='app.js'></script>
 ```
 
-*NOTE*: for production, you should use a build step or some middleware to concatenate and minify the scripts. We use [compact](http://github.com/serby/compact).
+*NOTE*: for production, you should use a build step or some middleware to concatenate and minify the scripts.
 
 a.js:
 
