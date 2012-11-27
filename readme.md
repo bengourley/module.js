@@ -13,9 +13,13 @@ The API is purposefully *very* simple. Including `module.js` on your page expose
 
 ### module(name, fn)
 
-Define a module by giving it a name (string) and a function. The function will be called with a single argument which looks like this: `{ exports: {} }`.
+This is actually an alias to the `require.register` function.
 
-You should label this object `module` if you want your code to feel like node.js modules: `module('name', function (module) { ... })`. Note that in node, you can attach things to `exports`. You **can't** do that with `module` – for consistency and simplicity only `module.exports` can be used.
+Define a module by giving it a name (string) and a function. In the simplest case, you can assume that the function will be called with a single argument that looks like this: `{ exports: {} }`.
+
+You should label this object `module` if you want your code to feel like node.js modules: `module('name', function (module) { ... })`.
+
+Note that in node, you can attach things to `exports`, and also do relative requires. If you want this functionality, you must provide more arguments like so: `module('name', function (module, exports, require) { ... })`.
 
 ### require(name)
 

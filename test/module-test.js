@@ -16,7 +16,7 @@ describe('creating a module', function () {
 
   it('enables a module to be required', function () {
 
-    window.module('a', function (module) {
+    require.register('a', function (module) {
       module.exports = 'I am a module'
     })
 
@@ -42,7 +42,7 @@ describe('creating a module', function () {
 
 })
 
-describe('loading a module', function () {
+describe('loading a module absolutely', function () {
 
   it('raises an error message when module of ' +
       'the given name doesn\'t exist', function () {
@@ -51,6 +51,28 @@ describe('loading a module', function () {
       window.require('z')
     }).toThrow()
 
+  })
+
+})
+
+describe('loading a module relatively', function () {
+
+  it('', function () {
+
+    window.require.register('baz.js', function (module, exports, require) {
+      module.exports = 'baz'
+    })
+
+    window.require.register('foo/a.js', function (module, exports, require) {
+      exports.foo = 10
+    })
+
+    window.require.register('foo/b.js', function (module, exports, require) {
+      expect(require('./a').foo).toEqual(10)
+      expect(require('../baz')).toEqual('baz')
+    })
+
+    window.require('foo/b')
   })
 
 })
