@@ -105,10 +105,5 @@ buster test
 
 When buster works on IE < 8, automated cross-browser testing will be realised. Until then, you can take some assurance that this script is deployed on an MPU widget on a major UK TV channel website for a major UK betting brand, which works in IE 6, 7 and 8.
 
-## Known issues
-A caveat of caching the results of each `require` is that the object can be modified after it has been required – affecting subsequent requires. Generally modifying an object that has been `require`d doesn't happen, but I want to resolve this edge case. However, a simple object clone will not do - what if the object has some prototypical inheritance going on?
-
-**Addendum:** I have just tried this in Node, and it has this same behaviour. You can, however, purge things from the cache in Node with require.cache, so perhaps it's worthwhile doing that?
-
 ## Licence
 Author: [Ben Gourley](mailto:bn@grly.me). Licenced under the [New BSD License](http://opensource.org/licenses/bsd-license.php)
